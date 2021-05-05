@@ -66,7 +66,6 @@ For example, to fill the row for `Expr'` we look for three of its possible produ
 | `Factor`         |                    |               |           |           | `Number`      | `( Expr )`    |
 
 
-## Initial implemention 
-(`parser0.js`)
+## Shunting-Yard algorithm
 
-We can use stack to preserve the order of operations. The method is to accumulate digits inside a `buffer` string and when an operator `op` is matched as a current symbol we have a form `Term termOp | buffer op` where `Term termOp` is a partial expression. So then, we create a new partial expression `(Term termOp buffer) op`. And keep doing so until a factor operator is reached, if the partial expression has term operators `+` or `-`, then that expression is pushed to the stack and the expression is assigned to `Factor op`. The expressions pushed to the stack are left side expressions, e.g. `3*` is the left side of the binary operator `*` in `3*(5+2)` inclusive. So we are essentially employing bottom-up parser.
+We can convert the infix notation to a postfix notation, e.g. `3+5-7` as postfix `3 5 + 7 -`. So, the operand can always be applied to its arguments to the left. The algorithm is taken from https://brilliant.org/wiki/shunting-yard-algorithm/ but some modifications need to take place. We can tokenize strings right away as we are parsing. Also, the line 5 should be changed from `greater precedence` to `greater or equal precedence` because in instances where operands have equal precedence the left association wins out `3*2/5`.
