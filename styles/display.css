@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font: 20px/1.5em Arial;
+}
+
+input {
+    font-size: 100%;
+}
+
+#container {
+    margin: 0 5em;
+    display: flex;
+    flex-direction: column;
+}
+
+#container div {
+
+}
+
+#evaluation-history {
+    min-height: 20vh;
+}
+
+#input {
+    margin-top: auto;
+    display: block;
+    width: 100%;
+    padding: .5em 1em;
+}

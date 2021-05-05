@@ -2,10 +2,18 @@
 <html>
 <head>
     <title>Arithmetic sentence parser</title>
-    <script src="table-driven-parsing.js"></script>
+    <link rel="stylesheet" href="styles/display.css">
+    <script src="js/shunting-yard.js" ></script>
+    <script src="js/main.js"></script>
 </head>
 
 <body>
-    hi
+    <div ID="container">
+        <ul ID="evaluation-history"></ul>
+        <form ID="form">
+            <input ID="input" type="text" placeholder="Enter expression, e.g. 2+3-4">
+            <button ID="evaluate" type="button">Evaluate</button>
+        </form>
+    </div>
 </body>
 </html>
