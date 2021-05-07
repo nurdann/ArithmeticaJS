@@ -65,7 +65,15 @@ For example, to fill the row for `Expr'` we look for three of its possible produ
 | `Term'`          | `Epsilon`          | `Epsilon`     | `* Factor Term'`| `/ Factor Term'`|   |               | `Epsilon` | `Epsilon`| 
 | `Factor`         |                    |               |           |           | `Number`      | `( Expr )`    |
 
+### Forming Syntax Tree
+
+The predictive algorithm described below traverses grammar rules in preorder (Section 4.4.4 from Aho et al.).
+![Predictive parsing algorithm](img/predictive-parsing.jpg)
+
+In order to build the syntax tree, we need to keep an object next to a rule so that when a rule is expanded the objects points to its production terms.
+
+Source: https://stackoverflow.com/a/27206881/1374078 
 
 ## Shunting-Yard algorithm
 
-We can convert the infix notation to a postfix notation, e.g. `3+5-7` as postfix `3 5 + 7 -`. So, the operand can always be applied to its arguments to the left. The algorithm is taken from https://brilliant.org/wiki/shunting-yard-algorithm/ but some modifications need to take place. We can tokenize strings right away as we are parsing. Also, the line 5 should be changed from `greater precedence` to `greater or equal precedence` because in instances where operands have equal precedence the left association wins out `3*2/5`.
+Another approach is to convert the infix notation to a postfix notation, e.g. `3+5-7` as postfix `3 5 + 7 -`. So, the operand can always be applied to its arguments to the left. The algorithm is taken from https://brilliant.org/wiki/shunting-yard-algorithm/ but some modifications need to take place. We can tokenize strings right away as we are parsing. Also, the line 5 should be changed from `greater precedence` to `greater or equal precedence` because in instances where operands have equal precedence the left association wins out `3*2/5`.
